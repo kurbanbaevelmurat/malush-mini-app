@@ -1,0 +1,1 @@
+# malush-mini-app
