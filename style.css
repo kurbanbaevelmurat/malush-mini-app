@@ -1,0 +1,448 @@
+/* ========== Палитра: шоколад и крем ========== */
+:root {
+  --choco-900: #2b1810;
+  --choco-800: #3e2318;
+  --choco-700: #5a3424;
+  --choco-500: #8b5a3c;
+  --caramel:   #c98a4b;
+  --caramel-l: #e8b77d;
+  --cream-50:  #fffaf3;
+  --cream-100: #fbf1e3;
+  --cream-200: #f3e2cb;
+  --cream-300: #e9d2b3;
+  --berry:     #c2546b;
+
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --shadow-sm: 0 2px 8px rgba(62, 35, 24, 0.08);
+  --shadow-md: 0 8px 24px rgba(62, 35, 24, 0.14);
+
+  --bar-height: 84px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  background: var(--cream-100);
+  color: var(--choco-800);
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100%;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.app {
+  max-width: 560px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: calc(var(--bar-height) + 24px + env(safe-area-inset-bottom));
+}
+
+/* ========== Шапка ========== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, var(--choco-800), var(--choco-700));
+  color: var(--cream-50);
+  box-shadow: var(--shadow-md);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.back-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 250, 243, 0.14);
+  color: var(--cream-50);
+  transition: background 0.2s;
+}
+.back-btn:active { background: rgba(255, 250, 243, 0.28); }
+.back-btn.hidden { display: none; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.brand-logo {
+  font-size: 30px;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  background: var(--cream-100);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.brand-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.brand-subtitle {
+  font-size: 13px;
+  color: var(--caramel-l);
+  margin-top: 2px;
+}
+
+/* ========== Экраны ========== */
+.content { padding: 20px 16px 0; }
+
+.screen { display: none; }
+.screen.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== Hero ========== */
+.hero { margin-bottom: 20px; }
+.hero-greeting {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--caramel);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  line-height: 1.25;
+  color: var(--choco-900);
+  margin-top: 4px;
+}
+
+/* ========== Категории ========== */
+.categories {
+  display: grid;
+  gap: 14px;
+}
+
+.category-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+  text-align: left;
+  border-radius: var(--radius-lg);
+  background: var(--cream-50);
+  color: var(--choco-800);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.category-card:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-md);
+}
+
+.category-image {
+  flex-shrink: 0;
+  width: 84px;
+  height: 84px;
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+}
+
+.category-body { flex: 1; min-width: 0; }
+.category-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--choco-900);
+}
+.category-desc {
+  font-size: 14px;
+  color: var(--choco-500);
+  margin-top: 4px;
+  line-height: 1.35;
+}
+.category-count {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--cream-200);
+  color: var(--choco-700);
+}
+.category-arrow {
+  font-size: 24px;
+  color: var(--caramel);
+  flex-shrink: 0;
+}
+
+/* Градиенты-заглушки для изображений */
+.bg-trifle  { background: linear-gradient(135deg, #f6d9c0, #d99a6c); }
+.bg-new     { background: linear-gradient(135deg, #f8d6dc, #c2546b); }
+.bg-cake    { background: linear-gradient(135deg, #e3c3a4, #5a3424); }
+
+/* ========== Товары ========== */
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--cream-50);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.product-image {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  font-size: 56px;
+  overflow: hidden;
+}
+.product-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--berry);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 4px;
+}
+.product-name {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--choco-900);
+  line-height: 1.25;
+}
+.product-desc {
+  font-size: 12px;
+  color: var(--choco-500);
+  line-height: 1.35;
+}
+.product-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.product-price {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--choco-700);
+}
+
+.add-btn {
+  width: 100%;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--choco-700);
+  color: var(--cream-50);
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.1s;
+}
+.add-btn:active { transform: scale(0.96); background: var(--choco-900); }
+
+/* Счётчик количества */
+.qty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--cream-200);
+  overflow: hidden;
+}
+.qty-btn {
+  width: 38px;
+  height: 100%;
+  background: transparent;
+  color: var(--choco-700);
+  font-size: 20px;
+  font-weight: 800;
+}
+.qty-btn:active { background: var(--cream-300); }
+.qty-value {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--choco-900);
+}
+
+/* ========== Нижняя панель ========== */
+.cart-bar {
+  position: fixed;
+  left: 50%;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  width: calc(100% - 24px);
+  max-width: 536px;
+  height: var(--bar-height);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 12px 12px 16px;
+  background: var(--choco-900);
+  color: var(--cream-50);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 32px rgba(43, 24, 16, 0.35);
+}
+
+.cart-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.cart-icon {
+  position: relative;
+  font-size: 24px;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 250, 243, 0.1);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--caramel);
+  color: var(--choco-900);
+  font-size: 12px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--choco-900);
+}
+.cart-badge.bump { animation: bump 0.35s ease; }
+@keyframes bump {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+.cart-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.cart-label {
+  font-size: 12px;
+  color: var(--caramel-l);
+  white-space: nowrap;
+}
+.cart-total {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.checkout-btn {
+  flex-shrink: 0;
+  height: 52px;
+  padding: 0 18px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--caramel-l), var(--caramel));
+  color: var(--choco-900);
+  font-size: 15px;
+  font-weight: 800;
+  transition: transform 0.1s, opacity 0.2s;
+}
+.checkout-btn:active:not(:disabled) { transform: scale(0.96); }
+.checkout-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ========== Toast ========== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--bar-height) + 28px + env(safe-area-inset-bottom));
+  transform: translate(-50%, 20px);
+  max-width: calc(100% - 32px);
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--choco-700);
+  color: var(--cream-50);
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 30;
+  white-space: nowrap;
+}
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ========== Маленькие экраны ========== */
+@media (max-width: 360px) {
+  .products { gap: 10px; }
+  .checkout-btn { padding: 0 12px; font-size: 14px; }
+  .cart-total { font-size: 16px; }
+}
